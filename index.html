@@ -3,459 +3,90 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Coaching Methods</title>
+<title>Nastasia Khmelnitski — Coaching Tools</title>
 <style>
   @import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600&display=swap');
 
   :root {
-    --dark:    #2E2E1E;
-    --mid:     #4A4A30;
-    --khaki:   #7A7A58;
-    --sage:    #AEAE8E;
-    --cream:   #F5F2E8;
-    --white:   #FAFAF8;
-    --ink:     #1A1A10;
-    --accent:  #C8C4A0;
+    --dark:  #2E2E1E;
+    --mid:   #4A4A30;
+    --khaki: #7A7A58;
+    --sage:  #AEAE8E;
+    --cream: #F5F2E8;
+    --white: #FAFAF8;
+    --ink:   #1A1A10;
   }
 
   * { box-sizing: border-box; margin: 0; padding: 0; }
-  body { font-family: 'DM Sans', sans-serif; background: var(--white); color: var(--ink); }
+  body { font-family: 'DM Sans', sans-serif; background: var(--white); color: var(--ink); min-height: 100vh; display: flex; flex-direction: column; }
 
-  /* NAV */
-  nav {
-    background: var(--white); padding: 14px 40px;
-    display: flex; justify-content: space-between; align-items: center;
-    position: sticky; top: 0; z-index: 100;
-    border-bottom: 1px solid var(--cream);
-  }
-  .nav-brand {
-    font-family: 'DM Serif Display', serif;
-    font-size: 15px; color: var(--dark); letter-spacing: 0.3px;
-  }
-  .nav-count { font-size: 11px; color: var(--sage); letter-spacing: 1px; font-weight: 500; }
+  /* HEADER */
+  .header { background: var(--dark); padding: 60px 52px 52px; border-bottom: 3px solid var(--khaki); }
+  .header-label { font-size: 10px; letter-spacing: 5px; text-transform: uppercase; color: var(--sage); margin-bottom: 18px; font-weight: 500; }
+  .header h1 { font-family: 'DM Serif Display', serif; font-size: clamp(36px, 6vw, 64px); font-weight: 400; color: var(--cream); line-height: 1.0; margin-bottom: 16px; }
+  .header h1 em { font-style: italic; color: var(--sage); }
+  .header-sub { font-size: 13px; color: var(--khaki); font-weight: 300; max-width: 480px; line-height: 1.6; }
 
-  /* HERO */
-  .hero { background: var(--dark); padding: 60px 40px 52px; }
-  .hero-label {
-    font-size: 10px; letter-spacing: 5px; text-transform: uppercase;
-    color: var(--sage); margin-bottom: 20px; font-weight: 500;
-  }
-  .hero h1 {
-    font-family: 'DM Serif Display', serif;
-    font-size: clamp(40px, 6vw, 72px); font-weight: 400; line-height: 1.0;
-    color: var(--cream); margin-bottom: 8px;
-  }
-  .hero h1 em { font-style: italic; color: var(--accent); }
-  .hero-sub {
-    font-size: 13px; color: var(--sage); margin-bottom: 36px;
-    font-weight: 300; letter-spacing: 0.3px;
-  }
+  /* BODY */
+  .body { padding: 52px; flex: 1; }
+  .section-label { font-size: 10px; letter-spacing: 4px; text-transform: uppercase; color: var(--khaki); font-weight: 600; margin-bottom: 24px; }
 
-  /* CONTROLS */
-  .controls-wrap { display: flex; gap: 10px; flex-wrap: wrap; align-items: center; margin-bottom: 18px; }
-  #search {
-    padding: 10px 16px; border: 1px solid var(--mid);
-    background: rgba(255,255,255,0.05); color: var(--cream);
-    font-size: 12px; font-family: 'DM Sans', sans-serif;
-    outline: none; width: 220px;
-  }
-  #search::placeholder { color: var(--khaki); }
-  #search:focus { border-color: var(--sage); }
-
-  .toggle-group { display: flex; }
-  .toggle-btn {
-    padding: 10px 18px; border: 1px solid var(--mid); border-right: none;
-    cursor: pointer; font-size: 10px; font-family: 'DM Sans', sans-serif;
-    font-weight: 600; letter-spacing: 2px; text-transform: uppercase;
-    background: transparent; color: var(--khaki); transition: all 0.12s;
-  }
-  .toggle-btn:last-child { border-right: 1px solid var(--mid); }
-  .toggle-btn.active { background: var(--sage); border-color: var(--sage); color: var(--dark); }
-  .toggle-btn:hover:not(.active) { color: var(--cream); }
-
-  /* FILTERS */
-  .filters-wrap { display: flex; gap: 6px; flex-wrap: wrap; }
-  .sit-btn {
-    padding: 7px 14px; border: 1px solid var(--mid);
-    background: transparent; color: var(--khaki); cursor: pointer;
-    font-size: 10px; font-family: 'DM Sans', sans-serif;
-    letter-spacing: 1.5px; text-transform: uppercase; font-weight: 600;
-    transition: all 0.12s;
-  }
-  .sit-btn:hover { border-color: var(--sage); color: var(--sage); }
-  .sit-btn.active { background: var(--sage); border-color: var(--sage); color: var(--dark); }
-  .sit-btn.career-tab { border-color: rgba(200,196,160,0.4); color: var(--accent); }
-  .sit-btn.career-tab:hover { border-color: var(--accent); }
-  .sit-btn.career-tab.active { background: var(--accent); border-color: var(--accent); color: var(--dark); }
-
-  /* STATS BAR */
-  .stats-bar {
-    background: var(--mid); padding: 10px 40px;
-    display: flex; gap: 24px; align-items: center;
-    font-size: 10px; letter-spacing: 2px; text-transform: uppercase;
-    font-weight: 600; color: var(--khaki);
-  }
-  .stat-practiced { color: var(--accent); }
-  .stat-learning { color: var(--sage); }
-  .divider { width: 1px; height: 12px; background: var(--khaki); opacity: 0.3; }
-
-  /* GRID AREA */
-  .grid-area { padding: 40px; }
-
-  .category-section { margin-bottom: 52px; }
-  .category-header {
-    display: flex; align-items: center; gap: 14px;
-    margin-bottom: 18px;
-  }
-  .cat-dot { width: 6px; height: 6px; background: var(--khaki); border-radius: 50%; flex-shrink: 0; }
-  .cat-label {
-    font-size: 10px; letter-spacing: 4px; text-transform: uppercase;
-    font-weight: 600; color: var(--khaki); white-space: nowrap;
-  }
-  .cat-line { flex: 1; height: 1px; background: var(--cream); }
-  .cat-count { font-size: 10px; color: var(--sage); letter-spacing: 1px; }
-
-  .cards-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 2px; }
+  /* CARDS */
+  .cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 2px; }
 
   .card {
-    background: var(--cream); padding: 20px 20px 18px;
-    transition: background 0.15s;
-    border-top: 2px solid transparent;
+    background: var(--cream); padding: 32px 28px;
+    text-decoration: none; color: inherit;
+    border-top: 3px solid var(--sage);
+    transition: background 0.15s, border-color 0.15s;
+    display: flex; flex-direction: column; gap: 12px;
   }
-  .card:hover { background: #EDE9DC; border-top-color: var(--khaki); }
-  .card.learning { background: var(--white); }
-  .card.learning:hover { background: #F0EDE4; border-top-color: var(--sage); }
+  .card:hover { background: #EDE9DC; border-top-color: var(--mid); }
 
-  .card-top { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 10px; }
-  .card-name {
-    font-family: 'DM Serif Display', serif;
-    font-size: 15px; color: var(--dark); line-height: 1.2;
-    font-weight: 400; flex: 1; padding-right: 8px;
-  }
-  .card-badge {
-    font-size: 9px; font-weight: 600; letter-spacing: 1.5px;
-    text-transform: uppercase; padding: 3px 8px; flex-shrink: 0;
-  }
-  .badge-practiced { background: var(--mid); color: var(--accent); }
-  .badge-learning { background: var(--cream); color: var(--khaki); border: 1px solid var(--sage); }
+  .card-num { font-family: 'DM Serif Display', serif; font-size: 40px; color: var(--sage); line-height: 1; }
+  .card-title { font-family: 'DM Serif Display', serif; font-size: 22px; color: var(--dark); line-height: 1.2; }
+  .card-title em { font-style: italic; color: var(--khaki); }
+  .card-desc { font-size: 13px; color: var(--khaki); font-weight: 300; line-height: 1.6; }
+  .card-link { font-size: 10px; letter-spacing: 2px; text-transform: uppercase; font-weight: 600; color: var(--mid); margin-top: auto; padding-top: 16px; }
 
-  .card-note { font-size: 11px; color: var(--khaki); margin-bottom: 8px; line-height: 1.5; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; }
-  .card-desc { font-size: 12px; color: var(--ink); margin-bottom: 14px; line-height: 1.6; font-weight: 300; opacity: 0.75; }
-  .card-tags { display: flex; flex-wrap: wrap; gap: 4px; }
-  .card-tag {
-    font-size: 9px; padding: 3px 9px; font-weight: 500;
-    background: transparent; color: var(--khaki);
-    border: 1px solid var(--sage); letter-spacing: 0.5px;
-  }
-
-  /* CAREER VIEW */
-  .career-view { background: var(--white); }
-
-  .career-hero {
-    background: var(--dark); padding: 48px 40px 40px;
-    border-bottom: 1px solid var(--mid);
-  }
-  .career-hero h2 {
-    font-family: 'DM Serif Display', serif;
-    font-size: clamp(32px, 5vw, 56px); font-weight: 400;
-    color: var(--cream); line-height: 1.0;
-  }
-  .career-hero h2 em { font-style: italic; color: var(--accent); }
-  .career-hero p { font-size: 12px; color: var(--sage); margin-top: 12px; letter-spacing: 0.3px; font-weight: 300; }
-
-  .career-content { padding: 40px; }
-
-  .career-phase-block { margin-bottom: 44px; }
-  .career-phase-header {
-    display: flex; align-items: center; gap: 14px; margin-bottom: 16px;
-  }
-  .phase-num {
-    font-family: 'DM Serif Display', serif;
-    font-size: 36px; color: var(--cream); line-height: 1;
-    background: var(--mid); padding: 4px 14px;
-    flex-shrink: 0;
-  }
-  .phase-label {
-    font-size: 10px; letter-spacing: 3px; text-transform: uppercase;
-    font-weight: 600; color: var(--khaki);
-  }
-  .phase-line { flex: 1; height: 1px; background: var(--cream); }
-
-  .career-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 2px; }
-  .career-card {
-    background: var(--cream); padding: 18px 20px;
-    transition: background 0.15s;
-  }
-  .career-card:hover { background: #EDE9DC; }
-  .career-card-top { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 6px; }
-  .career-card h3 {
-    font-family: 'DM Serif Display', serif;
-    font-size: 14px; color: var(--dark); line-height: 1.2; font-weight: 400;
-  }
-  .career-when { font-size: 11px; color: var(--khaki); font-style: italic; margin-bottom: 4px; line-height: 1.4; font-weight: 400; }
-  .career-note { font-size: 11px; color: var(--sage); line-height: 1.5; font-weight: 300; }
-
-  .empty {
-    padding: 80px 40px; text-align: center;
-    font-size: 10px; letter-spacing: 4px; text-transform: uppercase;
-    color: var(--sage); font-weight: 600;
-  }
-
-  footer {
-    background: var(--dark); padding: 20px 40px;
-    font-size: 10px; color: var(--khaki); letter-spacing: 2px;
-    text-transform: uppercase; font-weight: 500;
-    display: flex; justify-content: space-between; align-items: center;
-    border-top: 2px solid var(--mid);
-  }
+  /* FOOTER */
+  footer { background: var(--dark); padding: 16px 52px; font-size: 10px; color: var(--khaki); letter-spacing: 2px; text-transform: uppercase; border-top: 1px solid var(--mid); display: flex; justify-content: space-between; flex-wrap: wrap; gap: 8px; }
   footer em { color: var(--sage); font-style: normal; }
 </style>
 </head>
 <body>
 
-<nav>
-  <div class="nav-brand">Coaching Toolkit</div>
-  <div class="nav-count" id="nav-count"></div>
-</nav>
+  <div class="header">
+    <div class="header-label">Coaching Tools</div>
+    <h1>Nastasia<br><em>Khmelnitski</em></h1>
+    <div class="header-sub">Coach for Creatives, Artists and Business Professionals. A set of working tools for coaching practice.</div>
+  </div>
 
-<div class="hero">
-  <div class="hero-label">Methods &amp; Tools Reference</div>
-  <h1>My<br><em>Coaching</em><br>Toolkit</h1>
-  <div class="hero-sub">All methods. Filterable by situation.</div>
-  <div class="controls-wrap">
-    <input type="text" id="search" placeholder="Search methods..." oninput="render()">
-    <div class="toggle-group">
-      <button class="toggle-btn active" onclick="setStatus('all',this)">All</button>
-      <button class="toggle-btn" onclick="setStatus('practiced',this)">✓ Practiced</button>
-      <button class="toggle-btn" onclick="setStatus('learning',this)">◎ Learning</button>
+  <div class="body">
+    <div class="section-label">Tools</div>
+    <div class="cards">
+
+      <a class="card" href="./toolkit/">
+        <div class="card-num">01</div>
+        <div class="card-title">Coaching<br><em>Toolkit</em></div>
+        <div class="card-desc">All methods and tools organized by category and situation. Filterable by topic, coaching arc, and practice status.</div>
+        <div class="card-link">Open Toolkit →</div>
+      </a>
+
+      <a class="card" href="./discovery/">
+        <div class="card-num">02</div>
+        <div class="card-title">Discovery<br><em>Coffee Chat</em></div>
+        <div class="card-desc">A structured guide for the first conversation. Five sections from opening to contract, with coaching notes.</div>
+        <div class="card-link">Open Guide →</div>
+      </a>
+
     </div>
   </div>
-  <div class="filters-wrap" id="sit-filters"></div>
-</div>
 
-<div class="stats-bar" id="stats"></div>
-<div id="main-view"><div class="grid-area" id="grid"></div></div>
-<div id="career-view" class="career-view" style="display:none"></div>
+  <footer>
+    <div>nastasia-khmelnitski.github.io</div>
+    <em>Nastasia Khmelnitski — Coach for Creatives, Artists &amp; Business Professionals</em>
+  </footer>
 
-<footer>
-  <em>Nastasia Khmelnitski &mdash; Coach for Creatives, Artists &amp; Business Professionals</em>
-</footer>
-
-<script>
-const methods = [
-  { name:"GROW", category:"Session Framework", practiced:true, situations:["Goal setting","Problem solving","General sessions"], note:"Most flexible, good default", desc:"A four-step structure (Goal, Reality, Options, Way Forward) that guides a session from where the client is to where they want to go. Works for almost any topic." },
-  { name:"OSCAR", category:"Session Framework", practiced:false, situations:["Long-term goals","Progress tracking","Career"], note:"Adds review loop, solution-focused", desc:"Similar to GROW but starts with the desired Outcome first, then explores the Situation, Choices, and Actions, closing with a Review step built in for long-term work." },
-  { name:"CLEAR", category:"Session Framework", practiced:false, situations:["Transformational change","Executive work","Identity shift"], note:"Deep emotional exploration", desc:"Begins by contracting the session together, then moves through deep listening, exploration of beliefs and emotions, action, and review. Strong for identity-level change." },
-  { name:"GREAT", category:"Session Framework", practiced:false, situations:["Deadlines & timing","Procrastination","Transitions"], note:"Adds timing as strategic step", desc:"Like GROW but adds Timing as a dedicated step, making it ideal when the client's challenge is not just what to do but when, in what order, and by which deadline." },
-  { name:"PESO", category:"Session Framework", practiced:true, situations:["Session opening","Contracting","All sessions"], note:"Your default session structure", desc:"Your go-to session opener: Problem, Explanation, Solution Attempts, Objectives. Surfaces what the client brings, what they have tried, and what they want from the session." },
-  { name:"Wheel of Life", category:"Exploration", practiced:true, situations:["Life balance","Session opening","Goal setting"], note:"Map satisfaction across domains", desc:"A visual circle divided into life areas (career, health, relationships, etc.). The client scores each area, revealing where energy is high or low and where coaching focus belongs." },
-  { name:"Zurich Resource Model", category:"Exploration", practiced:true, situations:["Stuck clients","Self-doubt","Building confidence"], note:"Activates existing resources", desc:"Guides the client to identify and reconnect with inner resources — strengths, past successes, values — that already exist but feel inaccessible in the current stuck state." },
-  { name:"Inner Team", category:"Exploration", practiced:true, situations:["Internal conflict","Decision making","Self-sabotage"], note:"Gives voice to inner parts", desc:"Models the psyche as a team of inner figures (the critic, the dreamer, the protector, etc.). Each part gets a voice, revealing the internal conflict behind the client's ambivalence." },
-  { name:"Role Analysis", category:"Exploration", practiced:false, situations:["Role clarity","Work stress","Leadership"], note:"Clarifies role expectations", desc:"Maps the gap between what a role formally requires and what the client actually does. Useful when a client feels overwhelmed, underused, or in conflict with their professional environment." },
-  { name:"Role Model Reflection", category:"Exploration", practiced:false, situations:["Values & identity","Leadership style","Career direction"], note:"Extracts implicit values via role models", desc:"The client names 4 to 6 role models (positive and negative), extracts key characteristics from each, and distills their top 6. These become their implicit value system made explicit." },
-  { name:"Life Line", category:"Exploration", practiced:false, situations:["Transitions","Biography work","Finding patterns"], note:"Maps key life events on timeline", desc:"The client draws a timeline of their life marking highs, lows, and turning points. Reveals recurring patterns, resilience themes, and moments that shaped their current identity." },
-  { name:"Talent Exercise (Rappe-Giesecke)", category:"Exploration", practiced:false, situations:["Strengths","Career","Self-image"], note:"Surfaces unrecognized talents", desc:"A structured reflection that helps the client identify talents they take for granted or overlook because they feel natural. Often reveals the gap between self-perception and actual capability." },
-  { name:"Position Determination (Rappe-Giesecke)", category:"Exploration", practiced:false, situations:["Role clarity","Organizational coaching","Leadership"], note:"Base Triad: person, profession, function", desc:"Examines three dimensions of professional identity: who the person is, what their profession means to them, and what function they actually perform. Clarifies where tension or misalignment sits." },
-  { name:"House of Change (Janssen)", category:"Change", practiced:false, situations:["Resistance","Team change","Organizational transformation"], note:"Diagnose which room client is in", desc:"A four-room model (Contentment, Denial, Confusion, Renewal) that maps the emotional stages of change. Helps identify where the client or team is stuck and what kind of support is needed." },
-  { name:"Radatz Four-Step Model", category:"Change", practiced:false, situations:["Decision stuck","Ambivalence","Transition"], note:"Four courage quadrants", desc:"A quadrant model exploring four types of courage: to change, to preserve, to combine old and new, and to try something completely new. Especially powerful when a client is stuck between staying and leaving." },
-  { name:"Bridge Model", category:"Change", practiced:false, situations:["Endings & beginnings","Career transitions","Grief"], note:"Bridges transition states", desc:"William Bridges' model distinguishes between change (external) and transition (internal). It maps three phases: ending, the neutral zone, and new beginning. Useful when a client is grieving a loss while needing to move forward." },
-  { name:"I Want / I Can / I Must", category:"Change", practiced:false, situations:["Motivation","Change readiness","Goal alignment"], note:"Checks will, ability, obligation", desc:"Checks three conditions for sustainable action: whether the client truly wants the goal, whether they believe they can achieve it, and whether external conditions allow it. Misalignment in any of the three predicts failure." },
-  { name:"Fear Setting (Ferriss)", category:"Change", practiced:false, situations:["Fear of action","Big decisions","Avoidance"], note:"Maps worst-case scenarios", desc:"Tim Ferriss's structured exercise that maps the worst-case scenario in detail, evaluates how likely and survivable it is, and weighs it against the cost of inaction. Turns vague fear into a manageable calculation." },
-  { name:"Values Hierarchy Work", category:"Values & Identity", practiced:false, situations:["Decisions","Recurring conflict","Life direction"], note:"Pairwise comparison reveals true priorities", desc:"The client selects 8 to 10 values from a list, then compares each pair to identify which wins when forced to choose. The resulting hierarchy reveals the implicit priorities that drive real decisions." },
-  { name:"Growth vs Fixed Mindset (Dweck)", category:"Values & Identity", practiced:false, situations:["Resistance","Self-limiting beliefs","Learning blocks"], note:"Spot fixed mindset language, reframe effort", desc:"Carol Dweck's framework distinguishing between believing ability is fixed (I am not good at this) versus believing it can grow (I haven't learned this yet). Helps coaches hear limiting beliefs in the client's language." },
-  { name:"Wonder Wheel (Storch)", category:"Values & Identity", practiced:false, situations:["Motivation","Values","Goal energy"], note:"Connects values to intrinsic motivation", desc:"Dr. Maja Storch's tool that connects a desired goal to the client's core values and somatic felt sense. A goal only generates sustained motivation when it is rooted in something the client deeply cares about." },
-  { name:"Career Framework (Craig & Snook)", category:"Values & Identity", practiced:false, situations:["Purpose","Leadership identity","Career direction"], note:"From purpose to impact", desc:"Guides the client to identify their leadership purpose from their life story, extracting the themes that shaped them and translating them into a personal purpose statement that informs career direction." },
-  { name:"Four Perspectives for Conflict", category:"Conflict", practiced:false, situations:["Conflict","Repeated patterns","Blame cycles"], note:"Floor exercise: judgment to needs to empathy", desc:"A physical floor exercise using four markers: outer judgment, self-blame, own needs and feelings, and the other person's needs and feelings. Moving between positions breaks the judgment-blame cycle and opens genuine empathy." },
-  { name:"Meta-Mirror", category:"Conflict", practiced:false, situations:["Stuck conflict","Relationship patterns","Perspective shift"], note:"Adds observer meta-position", desc:"An NLP-based perceptual positions exercise where the client steps into their own perspective, the other person's perspective, and then an observer position. Reveals the pattern from outside the conflict." },
-  { name:"Motivational Interviewing", category:"Conflict", practiced:false, situations:["Resistance","Ambivalence","Behavior change"], note:"Evokes client's own motivation", desc:"Developed by Miller and Rollnick. A conversation style that evokes the client's own reasons for change rather than persuading them. Particularly effective when the client is ambivalent or resistant to a decision." },
-  { name:"Problem-Oriented Approach (Fisch)", category:"Conflict", practiced:false, situations:["Chronic problems","System analysis","Complex situations"], note:"Explores problem function", desc:"Richard Fisch's systemic approach that examines not just the problem but what function it serves in the client's system, and what attempts to solve it have paradoxically maintained it." },
-  { name:"SMART Goals", category:"Goals & Action", practiced:true, situations:["Action planning","HW setting","Accountability"], note:"Converts intentions to commitments", desc:"Turns a vague intention into a Specific, Measurable, Achievable, Relevant, Time-bound commitment. Used at the end of sessions to anchor the client's next step in something concrete and trackable." },
-  { name:"Eisenhower Matrix", category:"Goals & Action", practiced:true, situations:["Overwhelm","Prioritization","Time management"], note:"Urgent vs important", desc:"A two-axis grid separating tasks into four quadrants: urgent and important (do now), important but not urgent (schedule), urgent but not important (delegate), and neither (eliminate). Cuts through overwhelm fast." },
-  { name:"Expectation Carousel", category:"Goals & Action", practiced:false, situations:["Group / team","Expectation alignment","Workshop opening"], note:"Surfaces expectations visually", desc:"A group exercise where participants rotate around stations writing their expectations, concerns, and hopes. Surfaces hidden assumptions and misalignments before a workshop or team process begins." },
-  { name:"Iceberg Model", category:"Lens / Model", practiced:false, situations:["Behavior change","Stuck patterns","Beliefs"], note:"Visible behavior driven by invisible beliefs", desc:"A lens that distinguishes visible behaviors (above the waterline) from the invisible beliefs, values, and identity that drive them (below). Used to explore why insight alone does not produce change." },
-  { name:"Solution-Focused Approach (Meier/Szabo)", category:"Lens / Model", practiced:true, situations:["Strengths","Progress","What works"], note:"Build on exceptions, not problems", desc:"Adapted from de Shazer by Meier and Szabo. Focuses on exceptions (when is the problem not happening?), small steps forward, and what is already working, rather than analyzing the problem in depth." },
-  { name:"MetaFox Deep Cards (Leading Change)", category:"Tool", practiced:false, situations:["Team coaching","Change work","Visual goal setting"], note:"52 image + question cards (Kotter)", desc:"52 evocative image cards each paired with a coaching question, based on Kotter's change model. Used in teams to open conversations about change, surface resistance, and set direction through imagery." },
-  { name:"Systemic Questions", category:"Tool", practiced:true, situations:["All sessions","Perspective shift","Exploration"], note:"Circular, scaling, hypothetical questions", desc:"A family of question types (circular, scaling, hypothetical, future-oriented, difference questions) that shift perspective, reveal patterns, and open new thinking without the coach giving advice." },
-  { name:"Breathing / Meditation", category:"Tool", practiced:true, situations:["Grounding","High emotion","Session opening"], note:"Somatic regulation", desc:"Short breathing or mindfulness exercises used to ground the client at the start of a session, regulate strong emotion mid-session, or anchor a key insight before closing." },
-  { name:"Whiteboard Visualization", category:"Tool", practiced:true, situations:["Complexity","Systems","Teams"], note:"Externalizes thinking", desc:"Drawing the client's situation, system, or options on a whiteboard externalizes what is happening in their head, making patterns visible and giving both coach and client something to look at together rather than face each other." },
-  { name:"Somatic Observation", category:"Tool", practiced:true, situations:["Emotion","Incongruence","Body signals"], note:"Name what you observe in body/posture", desc:"The coach notices and names what they observe in the client's body — a shift in posture, a held breath, a tightening — and invites the client to bring attention there. The body often knows before the mind does." },
-  { name:"Hard Questions", category:"Tool", practiced:true, situations:["Stuck","Avoidance","Fixed mindset"], note:"Assumption challengers, fear naming, cost of avoidance", desc:"A set of question types designed to create productive discomfort: challenging assumptions, naming fears, confronting values, mirroring avoidance patterns, and asking what staying stuck is actually costing the client." },
-];
-
-const careerPhases = [
-  { phase:"Exploration & Awareness", items:[
-    { name:"Wheel of Life", when:"Client unclear on what needs attention", note:"Start here to map dissatisfaction across life domains" },
-    { name:"Values Hierarchy Work", when:"Client at a crossroads or decision point", note:"Clarifies what actually drives choices" },
-    { name:"Role Model Reflection", when:"Client unsure of professional identity", note:"Extracts implicit values and aspirations" },
-    { name:"Life Line", when:"Client needs to find patterns in their career story", note:"Maps key events, pivots, and energy peaks over time" },
-    { name:"Talent Exercise (Rappe-Giesecke)", when:"Client underestimates their own strengths", note:"Surfaces talents they may not consciously recognize" },
-  ]},
-  { phase:"Identity & Purpose", items:[
-    { name:"Career Framework (Craig & Snook)", when:"Client seeking deeper purpose or direction", note:"From personal story to leadership purpose" },
-    { name:"Wonder Wheel (Storch)", when:"Client disconnected from motivation", note:"Links values to energy and intrinsic drive" },
-    { name:"Inner Team", when:"Client torn between career options", note:"Gives voice to the parts pulling in different directions" },
-    { name:"Growth vs Fixed Mindset (Dweck)", when:"Client self-limiting around career moves", note:"Names and challenges the story stopping them" },
-    { name:"Iceberg Model", when:"Client repeats the same career pattern", note:"Surfaces the belief below the behavior" },
-  ]},
-  { phase:"Transition & Change", items:[
-    { name:"House of Change (Janssen)", when:"Client in organizational or role transition", note:"Diagnoses which emotional room they are in" },
-    { name:"Bridge Model", when:"Client leaving a role or entering a new chapter", note:"Honors the ending before building the new beginning" },
-    { name:"Radatz Four-Step Model", when:"Client stuck between staying and leaving", note:"Explores all four courage positions around the decision" },
-    { name:"Fear Setting (Ferriss)", when:"Client paralyzed by career risk", note:"Makes the worst-case concrete and survivable" },
-    { name:"I Want / I Can / I Must", when:"Client doubts readiness for a next step", note:"Checks alignment of will, capability, and obligation" },
-  ]},
-  { phase:"Role Clarity & Performance", items:[
-    { name:"Role Analysis", when:"Client unclear on expectations in current or new role", note:"Defines role boundaries and stakeholder expectations" },
-    { name:"Position Determination (Rappe-Giesecke)", when:"Client navigating person vs. profession tensions", note:"Base Triad clarifies where the conflict sits" },
-    { name:"GROW", when:"Goal is defined, need to build a plan", note:"GREAT adds timing for deadline-driven career goals" },
-    { name:"SMART Goals", when:"Action planning after direction is clear", note:"Turns career intentions into trackable commitments" },
-    { name:"Eisenhower Matrix", when:"Client overwhelmed in new role", note:"Helps prioritize what matters vs. what feels urgent" },
-  ]},
-  { phase:"Motivation & Resistance", items:[
-    { name:"Motivational Interviewing", when:"Client knows what to do but does not do it", note:"Evokes the client's own reasons for change" },
-    { name:"Solution-Focused Approach (Meier/Szabo)", when:"Client sees only obstacles", note:"Shifts focus to what already works" },
-    { name:"Zurich Resource Model", when:"Client in self-doubt about career capacity", note:"Rebuilds confidence from existing resources" },
-    { name:"Hard Questions", when:"Client avoiding a necessary career decision", note:"Cost of avoidance, fear naming, accountability mirrors" },
-  ]},
-];
-
-const situations = ["All","Career","Goal setting","Conflict","Resistance","Change","Transitions","Decisions","Identity","Teams","Stuck","Emotions"];
-const situationKeywords = {
-  "Goal setting":["goal setting","action planning","hw setting","progress"],
-  "Conflict":["conflict","blame","relationship","patterns","perspective shift"],
-  "Resistance":["resistance","avoidance","self-limiting","behavior change","ambivalence"],
-  "Change":["change","transformation","team change","change readiness"],
-  "Transitions":["transition","career transition","endings","biography"],
-  "Decisions":["decision","decision making","decision stuck"],
-  "Identity":["identity","values","purpose","leadership identity","self-image","career direction"],
-  "Teams":["team","organizational","group","workshop"],
-  "Stuck":["stuck","chronic","self-sabotage","stuck patterns"],
-  "Emotions":["emotion","high emotion","internal conflict","grief","body signals"],
-};
-
-let currentStatus = "all";
-let currentSituation = "All";
-
-function setStatus(val, btn) {
-  currentStatus = val;
-  document.querySelectorAll(".toggle-btn").forEach(b => b.classList.remove("active"));
-  btn.classList.add("active");
-  render();
-}
-
-function setSituation(val) {
-  currentSituation = val;
-  document.querySelectorAll(".sit-btn").forEach(b => b.classList.toggle("active", b.dataset.sit === val));
-  render();
-}
-
-function renderCareer() {
-  document.getElementById("main-view").style.display = "none";
-  document.getElementById("career-view").style.display = "block";
-  document.getElementById("stats").innerHTML = `<span>Career coaching guide</span><span class="divider"></span><span class="stat-practiced">Methods by phase</span>`;
-  document.getElementById("nav-count").textContent = "Career View";
-  document.getElementById("career-view").innerHTML = `
-    <div class="career-hero">
-      <h2>Career<br><em>Coaching</em><br>Guide</h2>
-      <p>Methods organized by coaching phase</p>
-    </div>
-    <div class="career-content">
-      ${careerPhases.map((p, i) => `
-        <div class="career-phase-block">
-          <div class="career-phase-header">
-            <div class="phase-num">${i+1}</div>
-            <div class="phase-label">${p.phase}</div>
-            <div class="phase-line"></div>
-          </div>
-          <div class="career-grid">
-            ${p.items.map(item => {
-              const m = methods.find(m => m.name === item.name);
-              const pr = m ? m.practiced : false;
-              return `<div class="career-card">
-                <div class="career-card-top">
-                  <h3>${item.name}</h3>
-                  <span class="card-badge ${pr?'badge-practiced':'badge-learning'}">${pr?'✓':'◎'}</span>
-                </div>
-                <div class="career-when">${item.when}</div>
-                <div class="career-note">${item.note}</div>
-              </div>`;
-            }).join('')}
-          </div>
-        </div>
-      `).join('')}
-    </div>
-  `;
-}
-
-function render() {
-  if (currentSituation === "Career") { renderCareer(); return; }
-  document.getElementById("main-view").style.display = "block";
-  document.getElementById("career-view").style.display = "none";
-
-  const search = document.getElementById("search").value.toLowerCase();
-  const filtered = methods.filter(m => {
-    const matchStatus = currentStatus === "all" || (currentStatus === "practiced" && m.practiced) || (currentStatus === "learning" && !m.practiced);
-    const matchSit = currentSituation === "All" || (() => {
-      const keys = situationKeywords[currentSituation] || [];
-      return m.situations.some(s => keys.some(k => s.toLowerCase().includes(k))) || keys.some(k => m.category.toLowerCase().includes(k));
-    })();
-    const matchSearch = !search || m.name.toLowerCase().includes(search) || m.note.toLowerCase().includes(search) || m.situations.some(s => s.toLowerCase().includes(search));
-    return matchStatus && matchSit && matchSearch;
-  });
-
-  const pCount = methods.filter(m=>m.practiced).length;
-  const lCount = methods.filter(m=>!m.practiced).length;
-  document.getElementById("stats").innerHTML = `
-    <span>${filtered.length} methods</span>
-    <span class="divider"></span>
-    <span class="stat-practiced">✓ ${pCount} practiced</span>
-    <span class="divider"></span>
-    <span class="stat-learning">◎ ${lCount} to learn</span>
-  `;
-  document.getElementById("nav-count").textContent = `${filtered.length} shown`;
-
-  const grouped = {};
-  filtered.forEach(m => { if (!grouped[m.category]) grouped[m.category]=[]; grouped[m.category].push(m); });
-
-  const grid = document.getElementById("grid");
-  if (!filtered.length) { grid.innerHTML='<div class="empty">No methods match this filter</div>'; return; }
-
-  grid.innerHTML = Object.keys(grouped).sort().map(cat => `
-    <div class="category-section">
-      <div class="category-header">
-        <div class="cat-dot"></div>
-        <span class="cat-label">${cat}</span>
-        <div class="cat-line"></div>
-        <span class="cat-count">${grouped[cat].length}</span>
-      </div>
-      <div class="cards-grid">
-        ${grouped[cat].map(m=>`
-          <div class="card ${m.practiced?'':'learning'}">
-            <div class="card-top">
-              <span class="card-name">${m.name}</span>
-              <span class="card-badge ${m.practiced?'badge-practiced':'badge-learning'}">${m.practiced?'✓':'◎'}</span>
-            </div>
-            <div class="card-note">${m.note}</div>
-            <div class="card-desc">${m.desc}</div>
-            <div class="card-tags">${m.situations.slice(0,3).map(s=>`<span class="card-tag">${s}</span>`).join('')}</div>
-          </div>
-        `).join('')}
-      </div>
-    </div>
-  `).join('');
-}
-
-const sitFilters = document.getElementById("sit-filters");
-situations.forEach(s => {
-  const btn = document.createElement("button");
-  btn.className = "sit-btn" + (s==="All"?" active":"") + (s==="Career"?" career-tab":"");
-  btn.dataset.sit = s;
-  btn.textContent = s;
-  btn.onclick = () => setSituation(s);
-  sitFilters.appendChild(btn);
-});
-
-render();
-</script>
 </body>
 </html>
