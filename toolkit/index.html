@@ -372,7 +372,7 @@ function renderArc(type) {
   const phases = type === "career" ? careerPhases : lifePhases;
   const title = type === "career" ? ["Career &amp;","Business","Career &amp; Business Guide","Methods organized by coaching phase"] : ["Life &amp;","Wellbeing","Life &amp; Wellbeing Guide","Methods for health, relationships, sport &amp; purpose"];
   document.getElementById("stats").innerHTML = `<span>${title[2]}</span><span class="divider"></span><span class="stat-practiced">${title[3]}</span>`;
-  document.getElementById("nav-count").textContent = title[2];
+  document.getElementById("nav-count").textContent = "";
   document.getElementById("arc-view").innerHTML = `
     <div class="arc-hero">
       <h2>${title[0]}<br><em>${title[1]}</em></h2>
