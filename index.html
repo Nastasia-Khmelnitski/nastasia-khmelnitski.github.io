@@ -8,50 +8,71 @@
   @import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600&display=swap');
 
   :root {
-    --dark:  #2E2E1E;
-    --mid:   #4A4A30;
-    --khaki: #7A7A58;
-    --sage:  #AEAE8E;
-    --cream: #F5F2E8;
-    --white: #FAFAF8;
-    --ink:   #1A1A10;
+    --dark:  #3A3A3C;
+    --mid:   #4A5248;
+    --khaki: #6A726A;
+    --sage:  #A8A8A4;
+    --cream: #F2F0EB;
+    --white: #F8F7F4;
+    --ink:   #1C1C1E;
+    --accent:#A8A8A4;
   }
 
   * { box-sizing: border-box; margin: 0; padding: 0; }
   body { font-family: 'DM Sans', sans-serif; background: var(--white); color: var(--ink); min-height: 100vh; display: flex; flex-direction: column; }
 
-  /* HEADER */
-  .header { background: var(--dark); padding: 60px 52px 52px; border-bottom: 3px solid var(--khaki); }
-  .header-label { font-size: 10px; letter-spacing: 5px; text-transform: uppercase; color: var(--sage); margin-bottom: 18px; font-weight: 500; }
-  .header h1 { font-family: 'DM Serif Display', serif; font-size: clamp(36px, 6vw, 64px); font-weight: 400; color: var(--cream); line-height: 1.0; margin-bottom: 16px; }
+  /* HEADER — tall like toolkit */
+  .header {
+    background: var(--dark);
+    padding: 80px 52px;
+    min-height: 80vh;
+    display: flex; flex-direction: column; justify-content: center;
+  }
+  .header-label { font-size: 10px; letter-spacing: 5px; text-transform: uppercase; color: var(--sage); margin-bottom: 20px; font-weight: 500; }
+  .header h1 {
+    font-family: 'DM Serif Display', serif;
+    font-size: clamp(48px, 8vw, 88px); font-weight: 400;
+    color: var(--cream); line-height: 0.95; margin-bottom: 20px;
+  }
   .header h1 em { font-style: italic; color: var(--sage); }
-  .header-sub { font-size: 13px; color: var(--khaki); font-weight: 300; max-width: 480px; line-height: 1.6; }
+  .header-sub { font-size: 13px; color: var(--sage); font-weight: 300; max-width: 480px; line-height: 1.6; }
 
   /* BODY */
   .body { padding: 52px; flex: 1; }
   .section-label { font-size: 10px; letter-spacing: 4px; text-transform: uppercase; color: var(--khaki); font-weight: 600; margin-bottom: 24px; }
 
-  /* CARDS */
+  /* CARDS — no box, same background as page */
   .cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 2px; }
 
   .card {
-    background: var(--cream); padding: 32px 28px;
+    background: var(--white);
+    padding: 32px 28px;
     text-decoration: none; color: inherit;
-    border-top: 3px solid var(--sage);
-    transition: background 0.15s, border-color 0.15s;
-    display: flex; flex-direction: column; gap: 12px;
+    transition: background 0.15s;
+    display: flex; flex-direction: column; gap: 14px;
   }
-  .card:hover { background: #EDE9DC; border-top-color: var(--mid); }
+  .card:hover { background: #EEECEA; }
 
   .card-num { font-family: 'DM Serif Display', serif; font-size: 40px; color: var(--sage); line-height: 1; }
-  .card-title { font-family: 'DM Serif Display', serif; font-size: 22px; color: var(--dark); line-height: 1.2; }
+  .card-title { font-family: 'DM Serif Display', serif; font-size: 22px; color: var(--ink); line-height: 1.2; }
   .card-title em { font-style: italic; color: var(--khaki); }
   .card-desc { font-size: 13px; color: var(--khaki); font-weight: 300; line-height: 1.6; }
-  .card-link { font-size: 10px; letter-spacing: 2px; text-transform: uppercase; font-weight: 600; color: var(--mid); margin-top: auto; padding-top: 16px; }
+
+  /* TAG-STYLE BUTTON matching toolkit tags */
+  .card-link {
+    display: inline-block;
+    font-size: 10px; padding: 5px 12px; font-weight: 600;
+    background: transparent; color: var(--khaki);
+    border: 1px solid var(--sage); letter-spacing: 1px;
+    text-transform: uppercase; margin-top: auto;
+    align-self: flex-start;
+    transition: background 0.12s, color 0.12s;
+  }
+  .card:hover .card-link { background: var(--mid); border-color: var(--mid); color: var(--cream); }
 
   /* FOOTER */
-  footer { background: var(--dark); padding: 16px 52px; font-size: 10px; color: var(--khaki); letter-spacing: 2px; text-transform: uppercase; border-top: 1px solid var(--mid); display: flex; justify-content: space-between; flex-wrap: wrap; gap: 8px; }
-  footer em { color: var(--sage); font-style: normal; }
+  footer { background: var(--dark); padding: 16px 52px; font-size: 10px; color: var(--sage); letter-spacing: 2px; text-transform: uppercase; border-top: 1px solid var(--mid); display: flex; flex-wrap: wrap; gap: 8px; }
+  footer em { color: var(--cream); font-style: normal; }
 </style>
 </head>
 <body>
@@ -70,14 +91,14 @@
         <div class="card-num">01</div>
         <div class="card-title">Coaching<br><em>Toolkit</em></div>
         <div class="card-desc">All methods and tools organized by category and situation. Filterable by topic, coaching arc, and practice status.</div>
-        <div class="card-link">Open Toolkit →</div>
+        <div class="card-link">Open Toolkit</div>
       </a>
 
       <a class="card" href="./discovery/">
         <div class="card-num">02</div>
         <div class="card-title">Discovery<br><em>Coffee Chat</em></div>
         <div class="card-desc">A structured guide for the first conversation. Five sections from opening to contract, with coaching notes.</div>
-        <div class="card-link">Open Guide →</div>
+        <div class="card-link">Open Guide</div>
       </a>
 
     </div>
