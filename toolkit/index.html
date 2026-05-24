@@ -179,6 +179,8 @@ const methods = [
   {name:"CLEAR",category:"Framework",practiced:false,topics:["Identity","Change","Wellbeing"],note:"Deep emotional and transformational exploration",desc:"Contract, Listen, Explore, Action, Review. Moves through deep listening and exploration of beliefs and emotions. Strong for identity-level change."},
   {name:"GREAT",category:"Framework",practiced:false,topics:["Career","Decisions","Change"],note:"Adds timing as strategic step",desc:"Goal, Reality, Explore, Action, Timing. Like GROW but adds Timing as a dedicated step, ideal when the client's challenge is not just what to do but when and in what order."},
   {name:"Career Framework (Craig & Snook)",category:"Framework",practiced:false,topics:["Career","Identity"],note:"From personal story to leadership purpose",desc:"Guides the client to identify their leadership purpose from their life story, translating key themes into a purpose statement that informs career direction."},
+  {name:"Golden Circle (Sinek)",category:"Framework",practiced:false,topics:["Career","Identity","Teams"],note:"Why, How, What — purpose before action",desc:"Simon Sinek's model that distinguishes between what an organisation or person does (What), how they do it (How), and why they do it (Why). Most people communicate outside-in. Inspiring leaders communicate from the Why outward. Used to help clients articulate their purpose and lead from it."},
+  {name:"Situational Leadership (Hersey & Blanchard)",category:"Framework",practiced:false,topics:["Teams","Career"],note:"Adapts leadership style to team member's development level",desc:"A leadership model describing four styles (directing, coaching, supporting, delegating) matched to four levels of team member competence and commitment. Used to help leaders diagnose what a team member needs and flex their approach accordingly."},
   {name:"Conflict Facilitation in Coaching",category:"Framework",practiced:false,topics:["Conflict","Relationships","Teams"],note:"Structured coaching approach to interpersonal conflict",desc:"A framework for facilitating conflict between two parties using coaching tools. Helps both parties access their own perspective, hear each other, and find a path forward. Not mediation — a coaching-based process."},
 
   // METHODS
@@ -186,6 +188,7 @@ const methods = [
   {name:"Zurich Resource Model",category:"Method",practiced:true,topics:["Stuck","Identity","Wellbeing"],note:"Activates existing resources",desc:"Guides the client to identify and reconnect with inner resources — strengths, past successes, values — that already exist but feel inaccessible in the current stuck state."},
   {name:"Inner Team",category:"Method",practiced:true,topics:["Identity","Conflict","Decisions"],note:"Gives voice to inner parts",desc:"Models the psyche as a team of inner figures. Each part gets a voice, revealing the internal conflict behind the client's ambivalence."},
   {name:"Role Analysis",category:"Method",practiced:false,topics:["Career","Identity","Teams"],note:"Clarifies role expectations and gaps",desc:"Maps the gap between what a role formally requires and what the client actually does. Useful when a client feels overwhelmed, underused, or in conflict with their professional environment."},
+  {name:"Role Expectations Scaling Analysis",category:"Method",practiced:false,topics:["Career","Identity","Teams"],note:"Scales and prioritizes expectations across stakeholders",desc:"A structured analysis that maps expectations from different stakeholders (manager, team, organisation, self) on a scale, revealing where the client is overloaded, misaligned, or working against competing demands."},
   {name:"Role Model Reflection",category:"Method",practiced:false,topics:["Identity","Career"],note:"Extracts implicit values via role models",desc:"The client names 4 to 6 role models, extracts key characteristics from each, and distills their top 6. These become their implicit value system made explicit."},
   {name:"Life Line",category:"Method",practiced:false,topics:["Identity","Change","Career"],note:"Maps key life events on a timeline",desc:"The client draws a timeline marking highs, lows, and turning points. Reveals recurring patterns, resilience themes, and moments that shaped their current identity."},
   {name:"Talent Exercise (Rappe-Giesecke)",category:"Method",practiced:false,topics:["Identity","Career","Wellbeing"],note:"Surfaces unrecognized talents",desc:"A structured reflection that helps the client identify talents they take for granted. Often reveals the gap between self-perception and actual capability."},
@@ -194,7 +197,7 @@ const methods = [
   {name:"Wonder Wheel (Storch)",category:"Method",practiced:false,topics:["Identity","Career","Wellbeing"],note:"Connects values to intrinsic motivation",desc:"Connects a desired goal to the client's core values and somatic felt sense. A goal only generates sustained motivation when rooted in something the client deeply cares about."},
   {name:"Four Perspectives for Conflict",category:"Method",practiced:false,topics:["Conflict","Relationships"],note:"Floor exercise: judgment to needs to empathy",desc:"A physical floor exercise using four markers: outer judgment, self-blame, own needs and feelings, and the other person's needs and feelings. Breaks the judgment-blame cycle."},
   {name:"Meta-Mirror",category:"Method",practiced:false,topics:["Conflict","Relationships","Stuck"],note:"Adds observer meta-position to conflict",desc:"An NLP-based perceptual positions exercise. The client steps into their own perspective, the other person's perspective, and then an observer position. Reveals the pattern from outside the conflict."},
-  {name:"Radatz Four-Step Model",category:"Method",practiced:false,topics:["Change","Decisions","Stuck"],note:"Four courage quadrants",desc:"Explores four types of courage: to change, to preserve, to combine old and new, and to try something completely new. Powerful when a client is stuck between staying and leaving."},
+  {name:"Four-Step Model (Radatz)",category:"Method",practiced:false,topics:["Change","Decisions","Stuck"],note:"Four courage quadrants",desc:"Explores four types of courage: to change, to preserve, to combine old and new, and to try something completely new. Powerful when a client is stuck between staying and leaving."},
   {name:"Fear Setting (Ferriss)",category:"Method",practiced:false,topics:["Change","Decisions","Stuck"],note:"Maps worst-case scenarios systematically",desc:"Maps the worst-case scenario in detail, evaluates how likely and survivable it is, and weighs it against the cost of inaction. Turns vague fear into a manageable calculation."},
   {name:"Circle of Influence",category:"Method",practiced:false,topics:["Stuck","Career","Change"],note:"Separates what you can control from what you cannot",desc:"Distinguishes between the circle of concern (everything that worries the client) and the circle of influence (where they can actually act). Redirects energy toward what is actionable."},
   {name:"Role Compass",category:"Method",practiced:false,topics:["Career","Identity","Change"],note:"Maps expected vs actual vs desired vs capable",desc:"Maps the client's current role across four directions: what they are expected to do, what they actually do, what they want to do, and what they are capable of. The gaps are the coaching material."},
@@ -210,13 +213,15 @@ const methods = [
   {name:"Problem-Oriented Approach (Fisch)",category:"Method",practiced:false,topics:["Stuck","Conflict","Change"],note:"Explores the function of the problem",desc:"Examines not just the problem but what function it serves in the client's system, and what attempts to solve it have paradoxically maintained it."},
   {name:"Motivational Interviewing (Miller & Rollnick)",category:"Method",practiced:false,topics:["Change","Stuck","Conflict"],note:"Evokes the client's own motivation for change",desc:"A conversation style that evokes the client's own reasons for change rather than persuading them. Particularly effective when the client is ambivalent or resistant."},
   {name:"Growth vs Fixed Mindset (Dweck)",category:"Method",practiced:false,topics:["Stuck","Identity","Change"],note:"Spot fixed mindset language, reframe effort",desc:"Distinguishes between believing ability is fixed versus believing it can grow. Helps coaches hear limiting beliefs in the client's language and reframe effort as the path to mastery."},
-  {name:"Iceberg Model",category:"Method",practiced:false,topics:["Stuck","Identity","Conflict"],note:"Visible behavior driven by invisible beliefs",desc:"Distinguishes visible behaviors from the invisible beliefs, values, and identity that drive them. Used to explore why insight alone does not produce change."},
+  {name:"Iceberg Model",category:"Method",practiced:true,topics:["Stuck","Identity","Conflict"],note:"Visible behavior driven by invisible beliefs",desc:"Distinguishes visible behaviors from the invisible beliefs, values, and identity that drive them. Used to explore why insight alone does not produce change."},
   {name:"House of Change (Janssen)",category:"Method",practiced:false,topics:["Change","Teams"],note:"Diagnose which room the client is in",desc:"A four-room model (Contentment, Denial, Confusion, Renewal) that maps the emotional stages of change. Identifies where the client or team is stuck and what kind of support is needed."},
   {name:"Drama Triangle (Karpman)",category:"Method",practiced:false,topics:["Conflict","Relationships","Identity"],note:"Identifies dysfunctional roles in conflict",desc:"Identifies three dysfunctional roles in conflict: Persecutor, Victim, Rescuer. The client identifies which role they occupy, how they move between roles, and how to step off the triangle entirely."},
   {name:"Transactional Analysis (Berne)",category:"Method",practiced:false,topics:["Conflict","Relationships"],note:"Parent, Adult, Child ego states in communication",desc:"Describes communication between three ego states: Parent, Adult, Child. Used to identify which state is driving a client's reactions in conflict or relationship patterns."},
   {name:"3 Sides of Organisation",category:"Method",practiced:false,topics:["Teams","Career","Change"],note:"Formal, informal, and shadow structures",desc:"Examines an organisation through three lenses: the formal structure (what is supposed to happen), the informal structure (what actually happens), and the shadow side (what drives everything but is never spoken)."},
   {name:"Bridge Model (Bridges)",category:"Method",practiced:false,topics:["Change","Career"],note:"Ending, neutral zone, new beginning",desc:"Distinguishes between change (external) and transition (internal). Maps three phases: ending, the neutral zone, and new beginning. Useful when a client is grieving a loss while needing to move forward."},
   {name:"I Want / I Can / I Must",category:"Method",practiced:false,topics:["Decisions","Change"],note:"Checks will, ability, and obligation",desc:"Checks three conditions for sustainable action: whether the client truly wants the goal, whether they believe they can achieve it, and whether external conditions allow it. Misalignment in any of the three predicts failure."},
+  {name:"Johari Window (Luft & Ingham)",category:"Method",practiced:false,topics:["Identity","Relationships","Teams"],note:"Maps known and unknown aspects of self in relation to others",desc:"A four-quadrant model mapping what is known to self and others (open), known only to others (blind spot), known only to self (hidden), and known to neither (unknown). Used to expand self-awareness, reduce blind spots, and build trust in relationships and teams."},
+  {name:"Leave it / Live it / Change it",category:"Method",practiced:false,topics:["Stuck","Change","Decisions"],note:"Three responses to situations you cannot immediately resolve",desc:"A simple but powerful decision framework for situations that are causing frustration or stuck energy. The client is invited to choose between leaving the situation, accepting and living with it fully, or committing to actively changing it. Stops the costly middle ground of resisting without acting."},
 
   // TOOLS
   {name:"Breathing / Meditation",category:"Tools",practiced:true,topics:["Wellbeing","Stuck"],note:"Somatic regulation",desc:"Short breathing or mindfulness exercises used to ground the client at the start of a session, regulate strong emotion mid-session, or anchor a key insight before closing."},
@@ -248,7 +253,7 @@ const topicArcs = {
     "Change & Transition": [
       {name:"House of Change (Janssen)", when:"Client in organizational or role transition", note:"Diagnoses which emotional room they are in"},
       {name:"Bridge Model (Bridges)", when:"Client leaving a role or entering a new chapter", note:"Honors the ending before building the new beginning"},
-      {name:"Radatz Four-Step Model", when:"Client stuck between staying and leaving", note:"Explores all four courage positions"},
+      {name:"Four-Step Model (Radatz)", when:"Client stuck between staying and leaving", note:"Explores all four courage positions"},
       {name:"Fear Setting (Ferriss)", when:"Client paralyzed by career risk", note:"Makes the worst-case concrete and survivable"},
       {name:"I Want / I Can / I Must", when:"Client doubts readiness for a next step", note:"Checks alignment of will, capability, obligation"},
       {name:"Circle of Influence", when:"Client overwhelmed by what they cannot control", note:"Redirects energy toward what is actionable"},
@@ -277,7 +282,7 @@ const topicArcs = {
     ],
     "Change & Transition": [
       {name:"Iceberg Model", when:"Client keeps making choices that feel wrong but cannot explain why", note:"The belief below the waterline is usually the answer"},
-      {name:"Radatz Four-Step Model", when:"Client torn between who they are and who they want to become", note:"Explores all four courage positions"},
+      {name:"Four-Step Model (Radatz)", when:"Client torn between who they are and who they want to become", note:"Explores all four courage positions"},
     ],
   },
   "Change": {
@@ -289,7 +294,7 @@ const topicArcs = {
     ],
     "Change & Transition": [
       {name:"Bridge Model (Bridges)", when:"Client grieving what they are leaving behind", note:"Honors the ending before the new beginning"},
-      {name:"Radatz Four-Step Model", when:"Client stuck between staying and changing", note:"Explores all four courage positions"},
+      {name:"Four-Step Model (Radatz)", when:"Client stuck between staying and changing", note:"Explores all four courage positions"},
       {name:"Fear Setting (Ferriss)", when:"Client paralyzed by the risk of changing", note:"Makes the worst-case concrete and survivable"},
       {name:"I Want / I Can / I Must", when:"Client wants to change but doubts their readiness", note:"Checks alignment of will, capability, obligation"},
       {name:"Circle of Influence", when:"Client overwhelmed by what they cannot change", note:"Redirects energy toward what is actionable"},
@@ -349,7 +354,7 @@ const topicArcs = {
       {name:"Fear Setting (Ferriss)", when:"Fear is blocking a decision", note:"Makes the worst-case concrete and survivable"},
     ],
     "Goals & Action": [
-      {name:"Radatz Four-Step Model", when:"Client stuck between two options", note:"Explores change, preserve, combine, and new"},
+      {name:"Four-Step Model (Radatz)", when:"Client stuck between two options", note:"Explores change, preserve, combine, and new"},
       {name:"I Want / I Can / I Must", when:"Client doubts whether they should or can act", note:"Checks alignment of will, capability, obligation"},
       {name:"SMART Goals", when:"Decision is made and action planning begins", note:"Turns the decision into a trackable commitment"},
     ],
@@ -433,7 +438,7 @@ const coachingArcs = {
       {phase:"Transition & Change", items:[
         {name:"House of Change (Janssen)", when:"Client in organizational or role transition", note:"Diagnoses which emotional room they are in"},
         {name:"Bridge Model (Bridges)", when:"Client leaving a role or entering a new chapter", note:"Honors the ending before the new beginning"},
-        {name:"Radatz Four-Step Model", when:"Client stuck between staying and leaving", note:"Explores all four courage positions"},
+        {name:"Four-Step Model (Radatz)", when:"Client stuck between staying and leaving", note:"Explores all four courage positions"},
         {name:"Fear Setting (Ferriss)", when:"Client paralyzed by career risk", note:"Makes the worst-case concrete and survivable"},
         {name:"I Want / I Can / I Must", when:"Client doubts readiness for a next step", note:"Checks will, capability, and obligation"},
       ]},
@@ -488,7 +493,7 @@ const coachingArcs = {
       {phase:"Life Balance & Transitions", items:[
         {name:"House of Change (Janssen)", when:"Client going through a major life shift", note:"Names the emotional room they are in and what they need"},
         {name:"Bridge Model (Bridges)", when:"Client grieving a life chapter that has ended", note:"Honors the loss before building what comes next"},
-        {name:"Radatz Four-Step Model", when:"Client torn between life options", note:"Explores all four courage positions"},
+        {name:"Four-Step Model (Radatz)", when:"Client torn between life options", note:"Explores all four courage positions"},
         {name:"Wheel of Life", when:"Client feels generally dissatisfied but cannot pinpoint why", note:"The visual map reveals what is out of balance"},
         {name:"Whiteboard Visualization", when:"Client has too many competing life demands in their head", note:"Drawing it out together makes the complexity manageable"},
       ]},
