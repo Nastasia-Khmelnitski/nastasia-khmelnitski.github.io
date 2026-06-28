@@ -63,6 +63,7 @@
   .category-header{display:flex;align-items:center;gap:14px;margin-bottom:18px;}
   .cat-dot{width:6px;height:6px;background:var(--khaki);border-radius:50%;flex-shrink:0;}
   .cat-label-text{font-size:10px;letter-spacing:4px;text-transform:uppercase;font-weight:600;color:var(--khaki);white-space:nowrap;}
+  .cat-topics{font-size:10px;letter-spacing:1px;text-transform:uppercase;font-weight:500;color:var(--sage);white-space:nowrap;}
   .cat-line{flex:1;height:1px;background:var(--cream);}
   .cat-count{font-size:10px;color:var(--sage);letter-spacing:1px;}
   .cards-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:2px;}
@@ -198,12 +199,14 @@ const methods = [
   {name:"Four Perspectives for Conflict",category:"Method",practiced:false,topics:["Conflict","Relationships"],note:"Floor exercise: judgment to needs to empathy",desc:"A physical floor exercise using four markers: outer judgment, self-blame, own needs and feelings, and the other person's needs and feelings. Breaks the judgment-blame cycle."},
   {name:"Meta-Mirror",category:"Method",practiced:false,topics:["Conflict","Relationships","Stuck"],note:"Adds observer meta-position to conflict",desc:"An NLP-based perceptual positions exercise. The client steps into their own perspective, the other person's perspective, and then an observer position. Reveals the pattern from outside the conflict."},
   {name:"Four-Step Model (Radatz)",category:"Method",practiced:false,topics:["Change","Decisions","Stuck"],note:"Four courage quadrants",desc:"Explores four types of courage: to change, to preserve, to combine old and new, and to try something completely new. Powerful when a client is stuck between staying and leaving."},
-  {name:"Fear Setting (Ferriss)",category:"Method",practiced:false,topics:["Change","Decisions","Stuck"],note:"Maps worst-case scenarios systematically",desc:"Maps the worst-case scenario in detail, evaluates how likely and survivable it is, and weighs it against the cost of inaction. Turns vague fear into a manageable calculation."},
+  {name:"Fear Setting (Ferriss)",category:"Method",practiced:true,topics:["Change","Decisions","Stuck"],note:"Maps worst-case scenarios systematically",desc:"Maps the worst-case scenario in detail, evaluates how likely and survivable it is, and weighs it against the cost of inaction. Turns vague fear into a manageable calculation."},
   {name:"Circle of Influence",category:"Method",practiced:false,topics:["Stuck","Career","Change"],note:"Separates what you can control from what you cannot",desc:"Distinguishes between the circle of concern (everything that worries the client) and the circle of influence (where they can actually act). Redirects energy toward what is actionable."},
   {name:"Role Compass",category:"Method",practiced:false,topics:["Career","Identity","Change"],note:"Maps expected vs actual vs desired vs capable",desc:"Maps the client's current role across four directions: what they are expected to do, what they actually do, what they want to do, and what they are capable of. The gaps are the coaching material."},
   {name:"Constellations with Figures",category:"Method",practiced:true,topics:["Relationships","Conflict","Teams"],note:"Spatial mapping of people, roles, and forces",desc:"Uses physical figures or objects to represent people, roles, or forces in the client's system. The client arranges them spatially and explores the dynamics between them. Surfaces patterns that words alone do not reach."},
   {name:"Leadership Maps",category:"Method",practiced:false,topics:["Career","Teams","Identity"],note:"Maps stakeholders, power dynamics, and alliances",desc:"A visual method for mapping the client's leadership landscape: key stakeholders, power dynamics, alliances and resistances, and where the client sits in the system."},
   {name:"Sweet Spot Analysis",category:"Method",practiced:false,topics:["Career","Identity","Decisions"],note:"Intersection of skill, passion, and value",desc:"Identifies the intersection of what the client is good at, what they love doing, and what the world needs or will pay for. The overlap is the direction for sustainable motivated work."},
+  {name:"Love, Freedom & Safety Triangle",category:"Method",practiced:false,topics:["Career","Identity"],note:"Three core needs that drive career and life choices",desc:"A model exploring how decisions are shaped by the pull between three core needs: love and connection, freedom and autonomy, and safety and security. When one need is being sacrificed for another, dissatisfaction follows. Helps the client see which need is currently underserved in their career or life choices."},
+  {name:"Skill Stacking",category:"Method",practiced:false,topics:["Career","Identity"],note:"Combining skills into a unique, valuable mix",desc:"Rather than aiming to be the best at one skill, the client identifies several skills they are above average at and considers how combining them creates a rare and valuable position. Useful when a client feels they are not exceptional enough in any single area to stand out."},
   {name:"Pattern Analysis",category:"Method",practiced:false,topics:["Stuck","Identity","Relationships"],note:"Names and explores recurring patterns",desc:"The coach and client identify a recurring pattern in behavior, relationships, or decisions. The pattern is named, its origin explored, and its function examined. Awareness is the first step to change."},
   {name:"Exploration of Different Perspectives",category:"Method",practiced:false,topics:["Conflict","Stuck","Relationships"],note:"Systematically examines a situation through multiple lenses",desc:"Examines a situation through the client's view, other stakeholders' views, a neutral observer's view, and a future self's view. Breaks fixed perspective and opens new options."},
   {name:"Business as Entity Visualisation",category:"Method",practiced:false,topics:["Career","Teams","Change"],note:"Treats the business as a separate living entity",desc:"The client takes a perspective outside themselves to see their business as something separate they are in relationship with, not just an extension of themselves. Opens systemic and strategic insight."},
@@ -218,18 +221,25 @@ const methods = [
   {name:"Drama Triangle (Karpman)",category:"Method",practiced:false,topics:["Conflict","Relationships","Identity"],note:"Identifies dysfunctional roles in conflict",desc:"Identifies three dysfunctional roles in conflict: Persecutor, Victim, Rescuer. The client identifies which role they occupy, how they move between roles, and how to step off the triangle entirely."},
   {name:"Transactional Analysis (Berne)",category:"Method",practiced:false,topics:["Conflict","Relationships"],note:"Parent, Adult, Child ego states in communication",desc:"Describes communication between three ego states: Parent, Adult, Child. Used to identify which state is driving a client's reactions in conflict or relationship patterns."},
   {name:"3 Sides of Organisation",category:"Method",practiced:false,topics:["Teams","Career","Change"],note:"Formal, informal, and shadow structures",desc:"Examines an organisation through three lenses: the formal structure (what is supposed to happen), the informal structure (what actually happens), and the shadow side (what drives everything but is never spoken)."},
-  {name:"Bridge Model (Bridges)",category:"Method",practiced:false,topics:["Change","Career"],note:"Ending, neutral zone, new beginning",desc:"Distinguishes between change (external) and transition (internal). Maps three phases: ending, the neutral zone, and new beginning. Useful when a client is grieving a loss while needing to move forward."},
+  {name:"Bridge Model (Bridges)",category:"Method",practiced:true,topics:["Change","Career"],note:"Ending, neutral zone, new beginning",desc:"Distinguishes between change (external) and transition (internal). Maps three phases: ending, the neutral zone, and new beginning. Useful when a client is grieving a loss while needing to move forward."},
   {name:"I Want / I Can / I Must",category:"Method",practiced:false,topics:["Decisions","Change"],note:"Checks will, ability, and obligation",desc:"Checks three conditions for sustainable action: whether the client truly wants the goal, whether they believe they can achieve it, and whether external conditions allow it. Misalignment in any of the three predicts failure."},
   {name:"Johari Window (Luft & Ingham)",category:"Method",practiced:false,topics:["Identity","Relationships","Teams"],note:"Maps known and unknown aspects of self in relation to others",desc:"A four-quadrant model mapping what is known to self and others (open), known only to others (blind spot), known only to self (hidden), and known to neither (unknown). Used to expand self-awareness, reduce blind spots, and build trust in relationships and teams."},
+  {name:"Human Scale Development (Max-Neef)",category:"Framework",practiced:false,topics:["Identity"],note:"Nine fundamental human needs framework",desc:"Manfred Max-Neef's framework identifying nine fundamental human needs: subsistence, protection, affection, understanding, participation, leisure, creation, identity, and freedom. Used to help a client see which of their fundamental needs are unmet, beyond the more obvious surface-level wants."},
+  {name:"The Odyssey Plan",category:"Method",practiced:false,topics:["Change","Career","Decisions"],note:"Maps three different five-year life paths",desc:"From Designing Your Life by Burnett and Evans. The client sketches three distinct possible paths for the next five years: the one they are currently on, an alternative they have considered, and a wildcard they have never seriously entertained. Comparing the three opens options that linear planning misses."},
+  {name:"The Energy Audit",category:"Method",practiced:false,topics:["Decisions","Wellbeing"],note:"Maps what gives and drains energy",desc:"The client reviews their regular activities, people, and commitments, marking each as energy-giving or energy-draining. Surfaces patterns invisible in day-to-day busyness and informs decisions about what to protect, reduce, or eliminate."},
+  {name:"The 10-10-10 Rule (Welch)",category:"Method",practiced:false,topics:["Decisions"],note:"Evaluates a decision across three time horizons",desc:"Suzy Welch's framework for decision-making: how will I feel about this choice in 10 minutes, in 10 months, and in 10 years? Separates short-term emotional reactions from longer-term values and consequences, helping the client decide with more perspective."},
   {name:"Leave it / Live it / Change it",category:"Method",practiced:false,topics:["Stuck","Change","Decisions"],note:"Three responses to situations you cannot immediately resolve",desc:"A simple but powerful decision framework for situations that are causing frustration or stuck energy. The client is invited to choose between leaving the situation, accepting and living with it fully, or committing to actively changing it. Stops the costly middle ground of resisting without acting."},
 
   // TOOLS
   {name:"Breathing / Meditation",category:"Tools",practiced:true,topics:["Wellbeing","Stuck"],note:"Somatic regulation",desc:"Short breathing or mindfulness exercises used to ground the client at the start of a session, regulate strong emotion mid-session, or anchor a key insight before closing."},
   {name:"MetaFox Deep Cards (Leading Change)",category:"Tools",practiced:false,topics:["Change","Teams"],note:"52 image and question cards based on Kotter",desc:"52 evocative image cards each paired with a coaching question. Used in teams to open conversations about change, surface resistance, and set direction through imagery."},
   {name:"Zurich Resource Model Cards",category:"Tools",practiced:true,topics:["Stuck","Identity","Wellbeing"],note:"Physical cards for resource activation",desc:"The physical card set that accompanies the Zurich Resource Model method. Used to help clients identify and tangibly connect with their existing inner resources."},
-  {name:"SMART Goals",category:"Tools",practiced:true,topics:["Career","Decisions"],note:"Converts intentions to commitments",desc:"Turns a vague intention into a Specific, Measurable, Achievable, Relevant, Time-bound commitment. Used at the end of sessions to anchor the client's next step."},
-  {name:"Eisenhower Matrix",category:"Tools",practiced:true,topics:["Career","Stuck"],note:"Urgent vs important prioritization",desc:"A two-axis grid separating tasks into four quadrants. Cuts through overwhelm fast and helps the client see what truly matters versus what only feels urgent."},
+  {name:"SMART Goals",category:"Method",practiced:true,topics:["Career","Decisions"],note:"Converts intentions to commitments",desc:"Turns a vague intention into a Specific, Measurable, Achievable, Relevant, Time-bound commitment. Used at the end of sessions to anchor the client's next step."},
+  {name:"Eisenhower Matrix",category:"Method",practiced:true,topics:["Career","Stuck"],note:"Urgent vs important prioritization",desc:"A two-axis grid separating tasks into four quadrants. Cuts through overwhelm fast and helps the client see what truly matters versus what only feels urgent."},
   {name:"Whiteboard Visualization",category:"Tools",practiced:true,topics:["Teams","Career","Change"],note:"Externalizes thinking spatially",desc:"Drawing the client's situation, system, or options on a whiteboard externalizes what is happening in their head, making patterns visible and giving both coach and client something to look at together."},
+  {name:"5-4-3-2-1 Grounding",category:"Tools",practiced:false,topics:["Wellbeing","Stuck"],note:"Sensory grounding for overwhelm and anxiety",desc:"A rapid grounding technique where the client names 5 things they see, 4 they hear, 3 they can touch, 2 they smell, and 1 they taste. Brings an anxious or overwhelmed client back into the present moment through the senses."},
+  {name:"Three Zones of Learning",category:"Tools",practiced:false,topics:["Stuck","Change","Wellbeing"],note:"Comfort, learning, and panic zones",desc:"A simple model distinguishing the comfort zone (safe but no growth), the learning zone (stretch and growth happen here), and the panic zone (too much stress, no learning occurs). Helps the client locate where they are and recalibrate the challenge to a productive level."},
+  {name:"The Push-Pull Coaching Continuum",category:"Tools",practiced:false,topics:["Career","Teams"],note:"Spectrum from directive to non-directive coaching style",desc:"A continuum describing coaching style from pushing (directive, advice-giving, challenging) to pulling (non-directive, evoking the client's own answers). Helps the coach consciously choose where to sit on the spectrum depending on what the client needs in the moment."},
 ];
 
 // Topic arc definitions — thematic sub-sections per topic
@@ -695,11 +705,19 @@ function render() {
   const grid = document.getElementById("grid");
   if (!filtered.length) { grid.innerHTML='<div class="empty">No methods match this filter</div>'; return; }
 
-  grid.innerHTML = catOrder.filter(c=>grouped[c].length>0).map(cat=>`
+  grid.innerHTML = catOrder.filter(c=>grouped[c].length>0).map(cat=>{
+    let topicSuffix = '';
+    if (search) {
+      const topicSet = new Set();
+      grouped[cat].forEach(m => m.topics.forEach(t => topicSet.add(t)));
+      if (topicSet.size) topicSuffix = `<span class="cat-topics">${Array.from(topicSet).slice(0,4).join(', ')}</span>`;
+    }
+    return `
     <div class="category-section">
       <div class="category-header">
         <div class="cat-dot"></div>
         <span class="cat-label-text">${cat}</span>
+        ${topicSuffix}
         <div class="cat-line"></div>
         <span class="cat-count">${grouped[cat].length}</span>
       </div>
@@ -717,7 +735,8 @@ function render() {
         `).join('')}
       </div>
     </div>
-  `).join('');
+  `;
+  }).join('');
 }
 
 // Build topic filters
