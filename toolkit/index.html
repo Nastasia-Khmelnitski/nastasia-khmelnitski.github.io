@@ -48,6 +48,10 @@
   .cat-btn.active{background:var(--mid);border-color:var(--mid);color:var(--cream);}
 
 
+  .lin-btn{padding:7px 14px;border:1px dashed rgba(74,82,72,0.5);background:transparent;color:var(--sage);cursor:pointer;font-size:10px;font-family:'DM Sans',sans-serif;letter-spacing:1.5px;text-transform:uppercase;font-weight:600;transition:all 0.12s;}
+  .lin-btn:hover{border-color:var(--sage);color:var(--cream);}
+  .lin-btn.active{background:var(--mid);border-color:var(--mid);border-style:solid;color:var(--cream);}
+
   .stats-bar{background:var(--mid);padding:10px 72px;display:flex;gap:24px;align-items:center;font-size:10px;letter-spacing:2px;text-transform:uppercase;font-weight:600;color:var(--khaki);flex-wrap:wrap;}
   .stat-practiced{color:var(--sage);}
   .divider{width:1px;height:12px;background:var(--khaki);opacity:0.3;}
@@ -108,7 +112,7 @@
 <div class="hero">
   <div class="hero-label">Methods &amp; Craft Reference</div>
   <h1>My<br><em>Coaching</em><br>Toolkit</h1>
-  <div class="hero-sub">Craft layer and single-home methods. Filterable by topic, category, and lineage.</div>
+  <div class="hero-sub">Topics file a method, arcs sequence it. Filterable by topic, category, and lineage.</div>
 
   <div class="row" style="margin-bottom:20px;">
     <input type="text" id="search" placeholder="Search..." oninput="render()">
@@ -125,11 +129,18 @@
     <button class="arc-btn" data-arc="life" onclick="setArc('life',this)">Restoring Balance</button>
     <button class="arc-btn" data-arc="changeDecisions" onclick="setArc('changeDecisions',this)">Navigating Change</button>
     <button class="arc-btn" data-arc="conflict" onclick="setArc('conflict',this)">Working Through Conflict</button>
+    <button class="arc-btn" data-arc="leadership" onclick="setArc('leadership',this)">Building Authority</button>
   </div>
 
   <div class="row">
     <span class="row-label">Topics</span>
     <div id="sit-filters" style="display:flex;gap:6px;flex-wrap:wrap;"></div>
+  </div>
+
+  <div class="row">
+    <span class="row-label">Lineage</span>
+    <button class="lin-btn" data-lin="Narrative" onclick="setLin('Narrative',this)">Narrative</button>
+    <button class="lin-btn" data-lin="Gestalt" onclick="setLin('Gestalt',this)">Gestalt</button>
   </div>
 
   <div class="row">
@@ -176,7 +187,7 @@ const methods = [
   {name:"Whiteboard Visualisation",category:"Tools",practiced:true,topic:"",note:"Externalises thinking spatially",desc:"Drawing the client's situation, system, or options on a whiteboard externalises what is happening in their head, making patterns visible and giving both coach and client something to look at together."},
   {name:"Visualisation",category:"Tools",practiced:true,topic:"",note:"Eyes closed, inner imagery",desc:"Guided inner imagery with eyes closed. Distinct from whiteboard work: nothing is drawn, the image forms internally. Useful for accessing what the analytical mind cannot reach directly."},
   {name:"MetaFox Deep Cards",category:"Tools",practiced:false,topic:"",note:"52 image and question cards",desc:"Evocative image cards each paired with a coaching question, based on Kotter's change model. Used to open conversations, surface resistance, and set direction through imagery."},
-  {name:"Zurich Resource Model Cards",category:"Tools",practiced:true,topic:"",note:"Picture card deck used within the ZRM arc",desc:"The physical picture cards that open the Zurich Resource Model sequence. The client selects an image intuitively rather than analytically, which becomes the starting point for the somatic marker and motto goal. Also usable standalone for resource activation."},
+  {name:"Zurich Resource Model Cards",category:"Tools",practiced:true,topic:"",note:"Picture card deck used within the ZRM arc",desc:"The physical picture cards that open the Zurich Resource Model sequence. The client selects an image intuitively rather than analytically, which becomes the starting point for the somatic marker and motto goal. Also usable standalone. Deliberate exception: Zurich appears twice, as this deck and as the full sequence under Life &amp; Mindfulness. The deck and the arc are reached for in different moments."},
 
   // ================= CRAFT LAYER — APPROACHES =================
   {name:"Systemic Coaching",category:"Approaches",practiced:true,topic:"",note:"The client is read through their system",desc:"Works with the client as part of a web of relationships, loyalties, and patterns rather than an isolated individual. Circular questioning, hypothesising, and attention to what the problem does for the system are its core moves."},
@@ -220,7 +231,7 @@ const methods = [
   {name:"Life Line",category:"Method",practiced:false,topic:"Life & Mindfulness",note:"Maps key life events on a timeline",desc:"The client draws a timeline marking highs, lows, and turning points. Reveals recurring patterns, resilience themes, and moments that shaped their current identity."},
   {name:"Wheel of Life",category:"Method",practiced:true,topic:"Life & Mindfulness",note:"Satisfaction across life domains",desc:"A visual circle divided into life areas. The client scores each area, revealing where energy is high or low and where coaching focus belongs."},
   {name:"Love, Freedom & Safety Triangle",category:"Method",practiced:false,topic:"Life & Mindfulness",note:"Three core needs behind life choices",desc:"Explores how decisions are shaped by the pull between love and connection, freedom and autonomy, and safety and security. When one need is sacrificed for another, dissatisfaction follows."},
-  {name:"Zurich Resource Model",category:"Method",practiced:true,topic:"Life & Mindfulness",note:"An arc of steps, not a single exercise",desc:"A sequence rather than one method. The client moves from an image or picture card, through a somatic marker, to a resource-activating motto goal and finally to embodied practice. The accompanying card deck is used within the arc. Reconnects the client with strengths and resources that already exist but feel inaccessible in the stuck state."},
+  {name:"Zurich Resource Model",category:"Method",practiced:true,topic:"Life & Mindfulness",note:"An arc of steps, not a single exercise",desc:"A sequence rather than one method. The client moves from an image or picture card, through a somatic marker, to a resource-activating motto goal and finally to embodied practice. Reconnects the client with strengths that already exist but feel inaccessible in the stuck state. Deliberate exception: Zurich appears twice, as this sequence and as the card deck under Tools."},
   {name:"The Energy Audit",category:"Method",practiced:false,topic:"Life & Mindfulness",note:"Maps what gives and drains energy",desc:"The client reviews their regular activities, people, and commitments, marking each as energy-giving or energy-draining. Surfaces patterns invisible in day-to-day busyness."},
   {name:"5-4-3-2-1 Grounding",category:"Method",practiced:false,topic:"Life & Mindfulness",note:"Sensory grounding for overwhelm",desc:"The client names five things they see, four they hear, three they can touch, two they smell, and one they taste. Brings an anxious or overwhelmed client back into the present through the senses."},
   {name:"Yesterday's Protocol",lineage:"Narrative",category:"Method",practiced:false,topic:"Life & Mindfulness",note:"Open narrative on micro-moments of yesterday",desc:"The client reports unprepared micro-moments from the previous day, raw and without explanation or evaluation. The coach asks only for detail: what colour, what smell, what exact words. An experiment in the difference between open and closed narrative."},
@@ -303,7 +314,7 @@ const coachingArcs = {
     {phase:"Balance & Transitions",items:["House of Change (Four Rooms of Change)","The Bridge Model","Four-Step Model","The Wonder Wheel"]},
   ]},
   changeDecisions:{meta:{h1:"Navigating",em:"Change",sub:"Weighing options, moving through transition, breaking the loop"},phases:[
-    {phase:"Naming the Stuck Point",items:["Pattern Analysis","The Iceberg Model","Circle of Influence","Circle of Experience","Three Zones of Learning"]},
+    {phase:"Naming the Stuck Point",items:["Pattern Analysis","The Iceberg Model","Circle of Influence","Circle of Experience","Three Zones of Learning","Name Changed By The Editors"]},
     {phase:"Mapping the Change",items:["House of Change (Four Rooms of Change)","The Bridge Model","Four-Step Model","Leave It / Live It / Change It","Hero's Journey"]},
     {phase:"Weighing the Decision",items:["10-10-10 Rule","The Odyssey Plan","Inner Team","Fear Setting"]},
     {phase:"Committing to Action",items:["Change Management Model (I Want / Can / Must)","Motivational Interviewing","SMART Goals","The Eisenhower Matrix"]},
@@ -314,12 +325,18 @@ const coachingArcs = {
     {phase:"Shifting Perspective",items:["Meta-Mirror: Taking Perspective","Exploration of Different Perspectives","Systemic Constellations","Reframing"]},
     {phase:"Moving Forward",items:["Conflict Facilitation","Motivational Interviewing","Solution-Focused Approach","I-Messages","Nonviolent Communication (NVC)"]},
   ]},
+  leadership:{meta:{h1:"Building",em:"Authority",sub:"Reading the system, seeing yourself in it, and leading people through it"},phases:[
+    {phase:"Reading the System",items:["Three Sides of the Organisation","Systemic Questions","Expectation Carousel","Circle of Influence"]},
+    {phase:"Seeing Yourself Clearly",items:["Johari Window","Role Model Reflection","Leadership Maps","The Role Expectations Scaling Analysis","Growth vs. Fixed Mindset"]},
+    {phase:"Leading People",items:["Situational Leadership","Push-Pull Coaching Continuum","Three Zones of Learning","I-Messages"]},
+    {phase:"Sustaining the Practice",items:["Skill Stacking","The Energy Audit","Head / Heart / Hand","SMART Goals"]},
+  ]},
 };
 
-let currentStatus="all", currentTopic="All", currentArc=null, currentCat=null;
+let currentStatus="all", currentTopic="All", currentArc=null, currentCat=null, currentLin=null;
 
 function clearAllBtns(){
-  document.querySelectorAll(".arc-btn,.cat-btn").forEach(b=>b.classList.remove("active"));
+  document.querySelectorAll(".arc-btn,.cat-btn,.lin-btn").forEach(b=>b.classList.remove("active"));
   document.querySelectorAll(".sit-btn").forEach(b=>b.classList.remove("active"));
   document.querySelector(".sit-btn[data-sit='All']").classList.add("active");
 }
@@ -331,21 +348,28 @@ function setStatus(val,btn){
   render();
 }
 function setTopic(val){
-  currentTopic=val; currentArc=null; currentCat=null;
-  document.querySelectorAll(".arc-btn,.cat-btn").forEach(b=>b.classList.remove("active"));
+  currentTopic=val; currentArc=null; currentCat=null; currentLin=null;
+  document.querySelectorAll(".arc-btn,.cat-btn,.lin-btn").forEach(b=>b.classList.remove("active"));
   document.querySelectorAll(".sit-btn").forEach(b=>b.classList.toggle("active",b.dataset.sit===val));
   render();
 }
 function setCat(val,btn){
   const wasActive = currentCat===val;
-  currentCat=null; currentArc=null; currentTopic="All";
+  currentCat=null; currentArc=null; currentLin=null; currentTopic="All";
   clearAllBtns();
   if(!wasActive){ currentCat=val; btn.classList.add("active"); }
   render();
 }
+function setLin(val,btn){
+  const wasActive = currentLin===val;
+  currentLin=null; currentArc=null; currentCat=null; currentTopic="All";
+  clearAllBtns();
+  if(!wasActive){ currentLin=val; btn.classList.add("active"); }
+  render();
+}
 function setArc(val,btn){
   const wasActive = currentArc===val;
-  currentArc=null; currentCat=null; currentTopic="All";
+  currentArc=null; currentCat=null; currentLin=null; currentTopic="All";
   clearAllBtns();
   if(wasActive){ render(); return; }
   currentArc=val; btn.classList.add("active");
@@ -420,7 +444,19 @@ function render(){
   const grid=document.getElementById("grid");
 
 
-  // Craft layer view
+  // Lineage view — all marked items, split craft vs methods
+  if(currentLin){
+    const list=base.filter(m=>m.lineage===currentLin);
+    renderStats(list,currentLin);
+    if(!list.length){ grid.innerHTML='<div class="empty">Nothing matches this filter</div>'; return; }
+    const craft=list.filter(m=>m.category!=="Method");
+    const meth=list.filter(m=>m.category==="Method");
+    grid.innerHTML=(craft.length?section("Category Layer","Skills and structures carrying this lineage.",craft):'')
+                 +(meth.length?section("Methods","Client-facing methods carrying this lineage.",meth):'');
+    return;
+  }
+
+  // Category layer view
   if(currentCat){
     const list=base.filter(m=>m.category===currentCat);
     renderStats(list,currentCat);
