@@ -84,6 +84,7 @@
   .arc-hero h2{font-family:'DM Serif Display',serif;font-size:clamp(32px,5vw,56px);font-weight:400;color:var(--cream);line-height:1.0;}
   .arc-hero h2 em{font-style:italic;color:var(--sage);}
   .arc-hero p{font-size:12px;color:var(--sage);margin-top:12px;font-weight:300;}
+  .arc-hero p.guide{font-size:11px;color:var(--khaki);margin-top:6px;font-style:italic;}
   .arc-content{padding:40px 72px;}
   .arc-phase-block{margin-bottom:44px;}
   .arc-phase-header{display:flex;align-items:center;gap:14px;margin-bottom:16px;}
@@ -411,7 +412,7 @@ function renderArc(type){
   const arc=coachingArcs[type];
   document.getElementById("stats").innerHTML=`<span>${arc.meta.h1} ${arc.meta.em}</span>`;
   document.getElementById("arc-view").innerHTML=`
-    <div class="arc-hero"><h2>${arc.meta.h1}<br><em>${arc.meta.em}</em></h2><p>${arc.meta.sub}</p></div>
+    <div class="arc-hero"><h2>${arc.meta.h1}<br><em>${arc.meta.em}</em></h2><p>${arc.meta.sub}</p><p class="guide">Within a phase, methods are options to choose from rather than a sequence to run in full.</p></div>
     <div class="arc-content">
       ${arc.phases.map((p,i)=>`
         <div class="arc-phase-block">
